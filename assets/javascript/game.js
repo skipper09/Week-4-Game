@@ -41,11 +41,12 @@ function selectCharacter () {
 })}};
 
 function selectEnemy () {
-	if (activeCharacter===true && activeEnemy===false) {
+	if (activeCharacter===true && activeEnemy==false) {
 		$('.img').on("click", function () {
 			$('#chosen-enemy').append(this);
 			$(this).attr("data-char","active")
 			$('#second-instruction').hide();
+			$('#third-instruction').css("display","block")
 			activeEnemy = true;
 		});
 	};
