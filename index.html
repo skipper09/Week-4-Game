@@ -15,23 +15,33 @@
         <div class="row">
             <div class="col-sm-6 panel panel-default main-body">
                 <h1>The Office RPG!</h1>
+                <p id="first-instruction">Click any character to start playing. You will then battle the remaining characters.</p>
+				<img class="img" data-char="inactive" src="http://placehold.it/100x100">
+                <img class="img" data-char="inactive" src="http://placehold.it/100x100">
+                <img class="img" data-char="inactive" src="http://placehold.it/100x100">
+                <img class="img" data-char="inactive" src="http://placehold.it/100x100">
+
                 <h3>Your Character</h3>
-                <img src="http://placehold.it/100x100">
-                <img src="http://placehold.it/100x100">
-                <img src="http://placehold.it/100x100">
-                <img src="http://placehold.it/100x100">
+                <div id="chosen-character"></div>
+
 
                 <h3>Enemies Available to Attack</h3>
+                <p id="second-instruction">Now choose which character to battle first.</p>
+				<div id="enemies-available"></div>
 
                 <h3>Fight Section</h3>
                 <button>Fight!</button>
                 <h3>Defender</h3>
+                <div id="chosen-enemy"></div>
+                <p></p>
+                <p></p>
                 <p></p>
                 <button>Restart</button>
             </div>
         </div>
     </div>
     </div>
+    <script type="text/javascript" src="assets/javascript/game.js"></script>
 </body>
 
 </html>

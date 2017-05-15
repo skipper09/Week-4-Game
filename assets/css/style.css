@@ -8,3 +8,11 @@ body {
 	padding-bottom:20px;
 	background: rgba(255,255,255,0.9);
 }
+
+img {
+	margin: 0px 2px 0px 0px;
+}
+
+#second-instruction {
+	display:none;
+}
