@@ -1,3 +1,5 @@
+$(document).ready(function() {
+
 var micheal = {
 	healthPoints:100,
 	attackPower: 20,
@@ -23,18 +25,18 @@ var activeCharacter = false;
 var activeEnemy = false;
 var passiveEnemy
 
-$(document).ready(function() {
+
 
 function selectCharacter () {
 	if (activeCharacter===false && activeEnemy===false) {
-	$('.img').on("click", function () {
-		$('#enemies-available').append($('[data-char="inactive"]'));
-		$('#chosen-character').append(this);
-		$(this).attr("data-char","active");
-		$('#first-instruction').hide();
-		$('#second-instruction').css("display","block")
-		activeCharacter = true;
-		selectEnemy();
+		$('.img').on("click", function () {
+			$('#enemies-available').append($('[data-char="inactive"]'));
+			$('#chosen-character').append(this);
+			$(this).attr("data-char","active");
+			$('#first-instruction').hide();
+			$('#second-instruction').css("display","block")
+			activeCharacter = true;
+			selectEnemy();
 	
 })}};
 
@@ -54,12 +56,13 @@ selectEnemy();
 
 
 
-// CHOOSE CHARACTER and have them all appear in the correct spot. Remove P from under H1//
+// CHOOSE CHARACTER and have them all appear in the correct spot. Remove P from under H1// done
 
 
-// Display p under enemies. Choose which enemy and have it show up in the correct spot//
+// Display p under enemies. Choose which enemy and have it show up in the correct spot// done
 
-//Keep them from being clickable until next character needs to be clicked//
+
+//Keep them from being clickable until next character needs to be clicked// !!!
 
 
 // Fight button will do what//
