@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
 var characters = [
    {    
     name: 'Micheal',
@@ -16,14 +15,14 @@ var characters = [
     imgSource: 'http://placehold.it/101x100'
     },
     {
-    name: 'Jim',
+    name: 'Pam',
     healthPoints: 180,
     attackPower: 60,
     counterAttackPower: 10,
     imgSource: 'http://placehold.it/102x100'
     },
     {
-    name: 'Andy',
+    name: 'Jim',
     healthPoints: 80,
     attackPower: 10,
     counterAttackPower: 5,
@@ -37,56 +36,133 @@ var selectedCharacter = {};
 var activeCharacter = false;
 var activeEnemy = false;
 
-$('.img').on("click", function () {
-	$('#enemies-available').append($('[data-char="inactive"]'));
-	$('#chosen-character').append(this);
-	$(this).attr("data-char","active");
-	$('#first-instruction').hide();
-	$('#second-instruction').css("display","block");
-	activeCharacter = true;
-	selectEnemy();
-});
+function endGame() {
+	if (selectedCharacter.healthPoints<=0) {
+		alert("You lose, sucker! Press 'Restart' to try again.")
+		return;
+	} else if (currentEnemy.healthPoints<=0) {
 
-$('.img').on("click", function () {
+	}
+
+};
+
+($('[data-name="michael"]')).on("click", function () {
+	if (activeCharacter==false && activeEnemy==false) {
+		$('#chosen-character').append(this);
+		$(this).attr("data-char","active");
+		$('#enemies-available').append($('[data-char="inactive"]'));
+		$('#first-instruction').hide();
+		$('#second-instruction').css("display","block");
+		activeCharacter = true;
+		selectedCharacter = characters[0];
+		return;
+		}
+
+	if (activeCharacter==true && activeEnemy==false) {
 		$('#chosen-enemy').append(this);
 		$(this).attr("data-char","active");
 		$('#second-instruction').hide();
 		$('#third-instruction').css("display","block");
+		currentEnemy = characters[0]
 		activeEnemy = true;
+
+	};
 });
 
-function selectCharacter () {
+($('[data-name="dwight"]')).on("click", function () {
 	if (activeCharacter===false && activeEnemy===false) {
-	};
-};
+		$('#chosen-character').append(this);
+		$(this).attr("data-char","active");
+		$('#enemies-available').append($('[data-char="inactive"]'));
+		$('#first-instruction').hide();
+		$('#second-instruction').css("display","block");
+		activeCharacter = true;
+		selectedCharacter = characters[1];
+		return;
+		}
 
-function selectEnemy () {
 	if (activeCharacter===true && activeEnemy===false) {
+		$('#chosen-enemy').append(this);
+		$(this).attr("data-char","active");
+		$('#second-instruction').hide();
+		$('#third-instruction').css("display","block");
+		currentEnemy = characters[1]
+		activeEnemy = true;
+
 	};
-};
+});
 
-selectCharacter();
-selectEnemy();
+($('[data-name="pam"]')).on("click", function () {
+	if (activeCharacter===false && activeEnemy===false) {
+		$('#chosen-character').append(this);
+		$(this).attr("data-char","active");
+		$('#enemies-available').append($('[data-char="inactive"]'));
+		$('#first-instruction').hide();
+		$('#second-instruction').css("display","block");
+		activeCharacter = true;
+		selectedCharacter = characters[2];
+		return;
+		}
 
+	if (activeCharacter===true && activeEnemy===false) {
+		$('#chosen-enemy').append(this);
+		$(this).attr("data-char","active");
+		$('#second-instruction').hide();
+		$('#third-instruction').css("display","block");
+		currentEnemy = characters[2]
+		activeEnemy = true;
 
+	};
+});
 
-// CHOOSE CHARACTER and have them all appear in the correct spot. Remove P from under H1// done
+($('[data-name="jim"]')).on("click", function () {
+	if (activeCharacter===false && activeEnemy===false) {
+		$('#chosen-character').append(this);
+		$(this).attr("data-char","active");
+		$('#enemies-available').append($('[data-char="inactive"]'));
+		$('#first-instruction').hide();
+		$('#second-instruction').css("display","block");
+		activeCharacter = true;
+		selectedCharacter = characters[3];
+		return;
+		}
 
+	if (activeCharacter===true && activeEnemy===false) {
+		$('#chosen-enemy').append(this);
+		$(this).attr("data-char","active");
+		$('#second-instruction').hide();
+		$('#third-instruction').css("display","block");
+		currentEnemy = characters[3]
+		activeEnemy = true;
+	};
+});
 
-// Display p under enemies. Choose which enemy and have it show up in the correct spot// done
+$('#fight').on("click", function (){
+   $('#score').html("You attacked " + currentEnemy.name +" for " + selectedCharacter.attackPower + " damage! <br> " +
+   	currentEnemy.name + " attacked you back for " + currentEnemy.counterAttackPower + " damage!");
 
+   selectedCharacter.healthPoints = selectedCharacter.healthPoints - currentEnemy.counterAttackPower;
+   currentEnemy.healthPoints = currentEnemy.healthPoints - selectedCharacter.attackPower;
+   selectedCharacter.attackPower = selectedCharacter.attackPower * 2;
+   
+   $('#score2').html("Your health points: " + selectedCharacter.healthPoints + "<br>" +
+   	currentEnemy.name + "'s health points: " + currentEnemy.healthPoints);
 
-//Keep them from being clickable until next character needs to be clicked// !!!
+   endGame();
+});
 
+$('restart').on("click", function () {
+});
 
-// Fight button will do what//
 
 
 //Have P's show up during game // 
 
-
+// win and loss based on points
 
 // reset button//
+
+// add media queries //
 
 
 

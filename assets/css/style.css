@@ -16,3 +16,38 @@ img {
 #second-instruction, #third-instruction {
 	display:none;
 }
+
+.float-under-image {
+	background-color: white;
+	text-align: center;
+	width:140px;
+	height:140px;
+	margin:3px;
+	z-index: 2;
+	float:left;
+}
+
+.img{
+	position:absolute;
+	z-index: 3;
+	top:20px;
+	left:20px;
+}
+
+.image-with-float {
+	float: left;
+	position:relative;
+}
+
+h3 {
+	clear:both;
+}
+
+.score {
+	margin-left: 20px;
+}
+
+button {
+	margin:10px;
+	float:left;
+}
