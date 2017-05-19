@@ -186,13 +186,6 @@ $('#restart').on("click", function () {
 	location.reload();
 });
 
-
-
-
-// reset button//
-
-// add media queries //
-
 // maybe change the colors of the floats behind the images like in the example //
 
 
