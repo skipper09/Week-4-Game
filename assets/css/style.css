@@ -53,3 +53,10 @@ button {
 	margin:10px;
 	float:left;
 }
+
+@media screen and (max-width: 768px) {
+    /* For mobile phones: */
+    [class*="col-"] {
+        width: 100%;
+    }
+}

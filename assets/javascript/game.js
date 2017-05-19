@@ -17,7 +17,7 @@ var characters = [
     {
     name: 'Pam',
     healthPoints: 180,
-    attackPower: 20,
+    attackPower: 18,
     counterAttackPower: 25,
     imgSource: 'http://placehold.it/102x100'
     },
@@ -35,10 +35,17 @@ var selectedCharacter = {};
 var activeCharacter = false;
 var activeEnemy = false;
 var deadEnemies = 0;
+var fightButtonClicks = 1;
+
+$("#one").html(characters[0].healthPoints)
+$("#two").html(characters[1].healthPoints)
+$("#three").html(characters[2].healthPoints)
+$("#four").html(characters[3].healthPoints)
 
 function endGame() {
 	if (selectedCharacter.healthPoints<=0) {
-		alert("You lose, sucker! Press 'Restart' to try again.")
+		$("#score").html("You lose, sucker! Press 'Restart' to try again.");
+		$("#score2").html("");
 		return;
 	} if (currentEnemy.healthPoints<=0) {
 		$("#fourth-instruction").css("display","block")
@@ -53,11 +60,6 @@ function endGame() {
 			$("#fourth-instruction").hide();
 	}
 };
-
-$("#one").html(characters[0].healthPoints)
-$("#two").html(characters[1].healthPoints)
-$("#three").html(characters[2].healthPoints)
-$("#four").html(characters[3].healthPoints)
 
 ($('[data-name="michael"]')).on("click", function () {
 	if (activeCharacter==false && activeEnemy==false) {
@@ -80,9 +82,9 @@ $("#four").html(characters[3].healthPoints)
 		$("#fifth-instruction").hide();
 		currentEnemy = characters[0]
 		activeEnemy = true;
-
 	};
 });
+
 
 ($('[data-name="dwight"]')).on("click", function () {
 	if (activeCharacter===false && activeEnemy===false) {
@@ -105,7 +107,6 @@ $("#four").html(characters[3].healthPoints)
 		$("#fifth-instruction").hide();
 		currentEnemy = characters[1]
 		activeEnemy = true;
-
 	};
 });
 
@@ -130,7 +131,6 @@ $("#four").html(characters[3].healthPoints)
 		$("#fifth-instruction").hide();
 		currentEnemy = characters[2]
 		activeEnemy = true;
-
 	};
 });
 
@@ -160,12 +160,13 @@ $("#four").html(characters[3].healthPoints)
 
 $('#fight').on("click", function (){
 	if (activeEnemy==true) {
+	fightButtonClicks++;
    	$('#score').html("You attacked " + currentEnemy.name +" for " + selectedCharacter.attackPower + " damage! <br> " +
    	currentEnemy.name + " attacked you back for " + currentEnemy.counterAttackPower + " damage!");
 
 	selectedCharacter.healthPoints = selectedCharacter.healthPoints - currentEnemy.counterAttackPower;
 	currentEnemy.healthPoints = currentEnemy.healthPoints - selectedCharacter.attackPower;
-	selectedCharacter.attackPower = selectedCharacter.attackPower * 2;
+	selectedCharacter.attackPower = selectedCharacter.attackPower * fightButtonClicks;
    
 	$('#score2').html("Your health points: " + selectedCharacter.healthPoints + "<br>" +
    	currentEnemy.name + "'s health points: " + currentEnemy.healthPoints);
@@ -180,26 +181,10 @@ $('#fight').on("click", function (){
 	} 
 });
 
+	//not working//
 $('#restart').on("click", function () {
-	var currentEnemy = {};
-	var selectedCharacter = {};
-	var activeCharacter = false;
-	var activeEnemy = false;
-	var deadEnemies = 0;
-	$('#score').html("");
-	$('#score2').html("");
-	$('#first-instruction').css("display","block")
-	$('#second-instruction').hide();
-	$('#third-instruction').hide();
-	$("#fourth-instruction").hide();
-	$("#fifth-instruction").hide();
-	$('#character-container').append($('.image-with-float'));
-	$('#enemies-available').html("");
-	$('#chosen-character').html("");
-	$('#chosen-enemy').html("");
-	//not working!//
+	location.reload();
 });
-
 
 
 
@@ -207,7 +192,6 @@ $('#restart').on("click", function () {
 // reset button//
 
 // add media queries //
-
 
 // maybe change the colors of the floats behind the images like in the example //
 
