@@ -182,8 +182,6 @@ $('#fight').on("click", function (){
 	$("#three").html(characters[2].healthPoints)
 	$("#four").html(characters[3].healthPoints)
 
-
-
 	} 
 });
 
