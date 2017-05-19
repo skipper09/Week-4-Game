@@ -13,7 +13,7 @@ img {
 	margin: 0px 2px 0px 0px;
 }
 
-#second-instruction, #third-instruction {
+#second-instruction, #third-instruction, #fourth-instruction {
 	display:none;
 }
 
@@ -43,8 +43,10 @@ h3 {
 	clear:both;
 }
 
-.score {
+.scores {
 	margin-left: 20px;
+	padding-left: 20px;
+	float:left;
 }
 
 button {

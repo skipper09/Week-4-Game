@@ -15,22 +15,23 @@
         <div class="row">
             <div class="col-sm-8 panel panel-default main-body">
                 <h1>The Office RPG!</h1>
-                <div>
+                <div id="character-container">
                     <p id="first-instruction">Click any character to start playing. You will then battle the remaining characters until you beat them all.</p>
                     <div class="image-with-float" data-char="inactive" data-name="michael">
-                        <div class="float-under-image">Michael</div>
+                        <div class="float-under-image">Michael <span id="one"></span></div>
                         <img class="img" src="assets/images/michael.png">
+                        
                     </div>
                     <div class="image-with-float" data-char="inactive" data-name="dwight">
-                        <div class="float-under-image">Dwight</div>
+                        <div class="float-under-image">Dwight <span id="two"></span></div>
                         <img class="img" src="assets/images/dwight.jpg">
                     </div>
                     <div class="image-with-float" data-char="inactive" data-name="pam">
-                        <div class="float-under-image">Pam</div>
+                        <div class="float-under-image">Pam <span id="three"></span></div>
                         <img class="img" src="assets/images/pam.png">
                     </div>
                     <div class="image-with-float" data-char="inactive" data-name="jim">
-                        <div class="float-under-image">Jim</div>
+                        <div class="float-under-image">Jim <span id="four"></span></div>
                         <img class="img" src="assets/images/jim.jpg">
                     </div>
                 </div>
@@ -41,8 +42,12 @@
                 <div id="enemies-available"></div>
                 <h3>The Arena</h3>
                 <div id="chosen-enemy"></div>
-                <p id="score"></p>
-                <p id="score2"></p>
+                <div id=scores>
+                    <p id="score"></p>
+                    <p id="score2"></p>
+                </div>
+                <p id="fourth-instruction">You have defeated this enemy! Click a new enemy to fight.</p>
+                <p id="fifth-instruction"></p>
                 <h3>Fight Section</h3>
                 <p id="third-instruction">Click the fight button below to attack your chosen enemy. He'll counter attack and you'll both lose HP! Keep pressing the button until you defeat your enemy.</p>
                 <button id="fight">Fight!</button> <button id="restart">Restart</button>
