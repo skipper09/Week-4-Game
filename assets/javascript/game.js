@@ -3,6 +3,7 @@ var characters = [
    {    
     name: 'Micheal',
     healthPoints: 100,
+    firstAttackPower: 5,
     attackPower: 5,
     counterAttackPower: 5,
     imgSource: 'http://placehold.it/100x100'
@@ -10,13 +11,15 @@ var characters = [
     {
     name: 'Dwight',
     healthPoints: 150,
-    attackPower: 15,
-    counterAttackPower: 20,
+    firstAttackPower: 10,
+    attackPower: 10,
+    counterAttackPower: 15,
     imgSource: 'http://placehold.it/101x100'
     },
     {
     name: 'Pam',
     healthPoints: 180,
+    firstAttackPower: 18,
     attackPower: 18,
     counterAttackPower: 25,
     imgSource: 'http://placehold.it/102x100'
@@ -24,6 +27,7 @@ var characters = [
     {
     name: 'Jim',
     healthPoints: 120,
+    firstAttackPower: 8,
     attackPower: 8,
     counterAttackPower: 5,
     imgSource: 'http://placehold.it/103x100'	
@@ -35,7 +39,7 @@ var selectedCharacter = {};
 var activeCharacter = false;
 var activeEnemy = false;
 var deadEnemies = 0;
-var fightButtonClicks = 1;
+
 
 $("#one").html(characters[0].healthPoints)
 $("#two").html(characters[1].healthPoints)
@@ -66,6 +70,7 @@ function endGame() {
 		$('#chosen-character').append(this);
 		$(this).attr("data-char","active");
 		$('#enemies-available').append($('[data-char="inactive"]'));
+
 		$('#first-instruction').hide();
 		$('#second-instruction').css("display","block");
 		activeCharacter = true;
@@ -160,33 +165,33 @@ function endGame() {
 
 $('#fight').on("click", function (){
 	if (activeEnemy==true) {
-	fightButtonClicks++;
    	$('#score').html("You attacked " + currentEnemy.name +" for " + selectedCharacter.attackPower + " damage! <br> " +
    	currentEnemy.name + " attacked you back for " + currentEnemy.counterAttackPower + " damage!");
 
-	selectedCharacter.healthPoints = selectedCharacter.healthPoints - currentEnemy.counterAttackPower;
 	currentEnemy.healthPoints = currentEnemy.healthPoints - selectedCharacter.attackPower;
-	selectedCharacter.attackPower = selectedCharacter.attackPower * fightButtonClicks;
-   
+	selectedCharacter.healthPoints = selectedCharacter.healthPoints - currentEnemy.counterAttackPower;
+	selectedCharacter.attackPower = selectedCharacter.attackPower +=selectedCharacter.firstAttackPower;
+
 	$('#score2').html("Your health points: " + selectedCharacter.healthPoints + "<br>" +
    	currentEnemy.name + "'s health points: " + currentEnemy.healthPoints);
+
+   	endGame();
 
 	$("#one").html(characters[0].healthPoints)
 	$("#two").html(characters[1].healthPoints)
 	$("#three").html(characters[2].healthPoints)
 	$("#four").html(characters[3].healthPoints)
 
-   endGame();
+
 
 	} 
 });
 
-	//not working//
 $('#restart').on("click", function () {
 	location.reload();
 });
 
-// maybe change the colors of the floats behind the images like in the example //
+// fix attack point increments//
 
 
 
